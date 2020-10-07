@@ -1,0 +1,6 @@
+{
+    "mongoURI": "mongodb+srv://robbied:canadian77@devconnector.hrdbd.mongodb.net/DevConnect?retryWrites=true&w=majority",
+    "jwtSecret": "mySecret",
+    "githubClientId": "a34ccbdfe3d89d54377f",
+    "githubClientSecret": "581469bd1951991f3dcd8a4d4ba10d6aab057dff"
+}
