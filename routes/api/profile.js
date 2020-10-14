@@ -7,6 +7,7 @@ const router = express.Router();
 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const Post = require('../../models/Post');
 const { response } = require('express');
 
 // @route GET api/profile/me
@@ -18,6 +19,7 @@ router.get('/me', auth, async (req, res) => {
 
         if(!profile) {
             return res.status(400).json({ msg: 'No profile for this user' });
+            
         }
 
         res.json(profile);
@@ -138,6 +140,8 @@ router.get('/user/:user_id', async (req,res) => {
 // @access private
 router.delete('/', auth, async (req,res) => {
     try {
+        // Remove user posts
+        await Post.deleteMany({ user: req.user.id });
         // Remove profile
         await Profile.findOneAndRemove({ user: req.user.id });
         // Remove user
